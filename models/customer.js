@@ -108,7 +108,7 @@ class Customer {
          	phone, 
          	notes
 			FROM customers
-			WHERE first_name=$1
+			WHERE first_name LIKE $1
 			`, [query]
 		);
 		return results.rows.map((c) => new Customer(c));
