@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+<ul >
+ 
+                <form action="/search/customer" methods="post">
+                    <div >
+                        <label for="search-bar" id="search-label">Search</label>
+                               <input type="text"  placeholder="Find Customer" id="search-bar" name="first_name" required>
+                          <button type="submit" class="btn btn-primary">Go!</button>
+                    </div>
+                </form>
+      </ul>
+
+<div>
+    <ul style="column-count: 4">
+        {% for customer in customers %}
+        <li><a href="/customer/{{ customer.id }}/">{{customer.fullname}}</a></li>
+        {% endfor %}
+      </ul>
+</div>
+
+
+
+
+{%endblock%}
+
