@@ -135,7 +135,9 @@ router.post("/search/customer", async function (req, res, next) {
 	try {
     const {first_name} = req.body;
     const customers= await Customer.search(first_name);
-    console.log(customers);
+ if(customers=== null){
+   throw new Error(`No such customer!`)
+ }
 		return res.render("search.html", { customers });
 	} catch (err) {
 		return next(err);
