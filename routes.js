@@ -133,8 +133,9 @@ router.get("/search/customer", async function(req, res, next) {
 
 router.post("/search/customer", async function (req, res, next) {
 	try {
-    const {first_name} = req.query;
+    const {first_name} = req.body;
     const customers= await Customer.search(first_name);
+    console.log(customers);
 		return res.render("search.html", { customers });
 	} catch (err) {
 		return next(err);
