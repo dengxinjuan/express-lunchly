@@ -133,7 +133,8 @@ router.get("/search/customer", async function(req, res, next) {
 
 router.post("/search/customer", async function (req, res, next) {
 	try {
-    const customers= await Customer.search(req.query.first_name);
+    const {first_name} = req.query;
+    const customers= await Customer.search(first_name);
 		return res.render("search.html", { customers });
 	} catch (err) {
 		return next(err);
